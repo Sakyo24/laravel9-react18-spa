@@ -1,8 +1,11 @@
 import React from 'react';
+import Router from './router';
 
 const App: React.FC = () => {
   return (
-    <h1 className='test'>Hello World!!</h1>
+    <>
+      <Router />
+    </>
   );
 }
 
