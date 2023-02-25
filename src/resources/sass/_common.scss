@@ -1,0 +1,35 @@
+body {
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+// -------------------- common --------------------
+.btn-default {
+  color: #fff;
+  text-decoration: none;
+}
+
+// -------------------- header --------------------
+header {
+  padding: 10px 20px;
+  background-color: #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .header-title {
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+}
+
+// -------------------- footer --------------------
+footer {
+  padding: 20px 0;
+  text-align: center;
+}

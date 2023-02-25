@@ -1,25 +1,24 @@
 import React from 'react';
 import {
-  createBrowserRouter,
-  RouterProvider,
+  BrowserRouter,
+  Routes,
+  Route,
 } from 'react-router-dom';
 import Top from './pages/top';
 import TodoIndex from './pages/todos/index';
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Top />,
-  },
-  {
-    path: "/todos",
-    element: <TodoIndex />,
-  },
-]);
+import Header from './components/Header'
+import Footer from './components/Footer'
 
 const Router = () => {
   return (
-    <RouterProvider router={router} />
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path='/' element={<Top />} />
+        <Route path='/todos' element={<TodoIndex />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
   );
 }
 
