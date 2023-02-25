@@ -5,9 +5,10 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
 
-class TodoSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -22,14 +23,16 @@ class TodoSeeder extends Seeder
             $dt = new Carbon('2021-12-31');
             $this_day = $dt->addDay($i);
             $datas[] = [
-                'title' => 'todo' . $i,
-                'detail' => 'todo' . $i . 'の詳細です。',
+                'name' => 'ユーザー' . $i,
+                'email' => 'user' . $i . '@test.ne.jp',
+                'email_verified_at' => null,
+                'password' => Hash::make('user' . $i),
+                'remember_token' => null,
                 'created_at' => $this_day,
                 'updated_at' => $this_day,
-                'deleted_at' => null,
             ];
         }
 
-        DB::table('todos')->insert($datas);
+        DB::table('users')->insert($datas);
     }
 }
