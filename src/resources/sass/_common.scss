@@ -12,6 +12,19 @@ h1, h2, h3, h4, h5, h6 {
   text-decoration: none;
 }
 
+.page-title {
+  margin-bottom: 20px;
+}
+
+.table-area {
+  max-width: 1200px;
+  margin: auto;
+  .table-header {
+    margin-bottom: 20px;
+    text-align: right;
+  }
+}
+
 // -------------------- header --------------------
 header {
   padding: 10px 20px;
@@ -26,6 +39,13 @@ header {
       text-decoration: none;
     }
   }
+}
+
+// -------------------- main --------------------
+main {
+  max-width: 1500px;
+  margin: auto;
+  padding: 10px 20px;
 }
 
 // -------------------- footer --------------------

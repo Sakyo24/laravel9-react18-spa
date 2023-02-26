@@ -9,9 +9,7 @@ const Header = () => {
       </h1>
 
       <div className='header-btn-area'>
-        <Link to={`/login`} className='btn btn-primary btn-default'>
-          ログイン
-        </Link>
+        <Link to={`/login`} className='btn btn-primary btn-default'>ログイン</Link>
       </div>
     </header>
   );

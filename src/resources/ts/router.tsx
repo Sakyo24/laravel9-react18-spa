@@ -13,10 +13,12 @@ const Router = () => {
   return (
     <BrowserRouter>
       <Header />
-      <Routes>
-        <Route path='/' element={<Top />} />
-        <Route path='/todos' element={<TodoIndex />} />
-      </Routes>
+      <main>
+        <Routes>
+          <Route path='/' element={<Top />} />
+          <Route path='/todos' element={<TodoIndex />} />
+        </Routes>
+      </main>
       <Footer />
     </BrowserRouter>
   );
