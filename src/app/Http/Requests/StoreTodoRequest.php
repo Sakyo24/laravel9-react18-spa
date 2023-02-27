@@ -28,4 +28,17 @@ class StoreTodoRequest extends FormRequest
             'detail' => ['required', 'max:140'],
         ];
     }
+
+    /**
+     * Get custom attributes for validator errors.
+     *
+     * @return array
+     */
+    public function attributes()
+    {
+        return [
+            'title' => 'タイトル',
+            'detail' => '詳細',
+        ];
+    }
 }
