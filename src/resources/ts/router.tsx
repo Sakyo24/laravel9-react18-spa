@@ -4,10 +4,11 @@ import {
   Routes,
   Route,
 } from 'react-router-dom';
-import Top from './pages/top';
-import TodoIndex from './pages/todos/index';
 import Header from './components/Header'
 import Footer from './components/Footer'
+import Top from './pages/top';
+import TodoIndex from './pages/todos/index';
+import TodoShow from './pages/todos/show';
 
 const Router = () => {
   return (
@@ -17,6 +18,7 @@ const Router = () => {
         <Routes>
           <Route path='/' element={<Top />} />
           <Route path='/todos' element={<TodoIndex />} />
+          <Route path='/todos/:id' element={<TodoShow />} />
         </Routes>
       </main>
       <Footer />

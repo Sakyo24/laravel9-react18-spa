@@ -8,7 +8,7 @@ const TodoIndex: React.FC = () => {
   const [todos, setTodos] = useState<Todo[]>([])
 
   const getTodos = async () => {
-    const { data, status } = await axios.get('api/todos');
+    const { data, status } = await axios.get('/api/todos');
     if (status === 200) {
       setTodos(data.todos)
       setLoadStatus('success')

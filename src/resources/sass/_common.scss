@@ -19,9 +19,14 @@ h1, h2, h3, h4, h5, h6 {
 .table-area {
   max-width: 1200px;
   margin: auto;
+
   .table-header {
     margin-bottom: 20px;
     text-align: right;
+  }
+  .table-footer {
+    display: flex;
+    justify-content: space-between;
   }
 }
 
