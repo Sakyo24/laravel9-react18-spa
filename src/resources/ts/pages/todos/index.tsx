@@ -28,6 +28,23 @@ const TodoIndex: React.FC = () => {
     }
   }
 
+  const handleDelete = async (id: number) => {
+    if (confirm(`ID:${id}を削除して宜しいでしょうか？`)){
+      const { status } = await axios.delete<Todo>(
+        `/api/todos/${id}`
+      )
+
+      if (status === 204) {
+        setFlashType('success')
+        setFlashMessage('Todoを削除しました')
+        getTodos()
+      } else {
+        setFlashType('danger')
+        setFlashMessage('Todoの削除に失敗しました')
+      }
+    }
+  }
+
   useEffect(() => {
     getTodos()
     getFlashMessage()
@@ -71,7 +88,7 @@ const TodoIndex: React.FC = () => {
                   <Link to={`/todos/${todo.id}/edit`} className='btn btn-success btn-default'>編集</Link>
                 </td>
                 <td>
-                  <button className='btn btn-danger btn-default'>削除</button>
+                  <button className='btn btn-danger btn-default' onClick={() => handleDelete(todo.id)}>削除</button>
                 </td>
               </tr>
             )) }
