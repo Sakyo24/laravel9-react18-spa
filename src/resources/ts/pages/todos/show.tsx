@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import axios from 'axios';
+import FlashMessage from '../../components/FlashMessage';
 import { Todo } from '../../models/Todo';
 
 const TodoShow: React.FC = () => {
-  const params = useParams();
+  const location = useLocation()
+  const params = useParams()
   const [loadStatus, setLoadStatus] = useState<string>('loading')
   const [todo, setTodo] = useState<Todo|undefined>()
+  const [flashType, setFlashType] = useState<string>('')
+  const [flashMessage, setFlashMessage] = useState<string>('')
 
   const getTodo = async () => {
     const { data, status } = await axios.get('/api/todos/' + params.id);
@@ -18,8 +22,16 @@ const TodoShow: React.FC = () => {
     }
   }
 
+  const getFlashMessage = () => {
+    if (location?.state) {
+      setFlashType(location?.state.flash_type)
+      setFlashMessage(location?.state.flash_message)
+    }
+  }
+
   useEffect(() => {
-    getTodo();
+    getTodo()
+    getFlashMessage()
   }, [])
 
   if (loadStatus === 'loading') {
@@ -31,6 +43,7 @@ const TodoShow: React.FC = () => {
   return (
     <>
       <h1 className='page-title'>Todo詳細</h1>
+      <FlashMessage type={flashType} message={flashMessage} />
       <div className='table-area'>
         <table className='table table-hover'>
           <tbody>

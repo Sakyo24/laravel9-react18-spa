@@ -13,7 +13,7 @@ class UpdateTodoRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,21 @@ class UpdateTodoRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => ['required', 'max:25'],
+            'detail' => ['required', 'max:140'],
+        ];
+    }
+
+    /**
+     * Get custom attributes for validator errors.
+     *
+     * @return array
+     */
+    public function attributes()
+    {
+        return [
+            'title' => 'タイトル',
+            'detail' => '詳細',
         ];
     }
 }

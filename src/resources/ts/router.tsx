@@ -10,6 +10,7 @@ import Top from './pages/top';
 import TodoIndex from './pages/todos/index';
 import TodoCreate from './pages/todos/create';
 import TodoShow from './pages/todos/show';
+import TodoEdit from './pages/todos/edit';
 
 const Router = () => {
   return (
@@ -21,6 +22,7 @@ const Router = () => {
           <Route path='/todos' element={<TodoIndex />} />
           <Route path='/todos/create' element={<TodoCreate />} />
           <Route path='/todos/:id' element={<TodoShow />} />
+          <Route path='/todos/:id/edit' element={<TodoEdit />} />
         </Routes>
       </main>
       <Footer />

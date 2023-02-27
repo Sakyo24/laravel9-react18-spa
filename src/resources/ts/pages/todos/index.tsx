@@ -29,8 +29,8 @@ const TodoIndex: React.FC = () => {
   }
 
   useEffect(() => {
-    getTodos();
-    getFlashMessage();
+    getTodos()
+    getFlashMessage()
   }, [])
 
   if (loadStatus === 'loading') {
