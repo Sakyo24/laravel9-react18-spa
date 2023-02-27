@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use App\Traits\SerializeDate;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Todo extends Model
 {
     use HasFactory;
+    use SerializeDate;
 
     /**
      * The attributes that are mass assignable.
