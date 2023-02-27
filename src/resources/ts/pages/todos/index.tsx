@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
+import FlashMessage from '../../components/FlashMessage';
 import { Todo } from '../../models/Todo';
 
 const TodoIndex: React.FC = () => {
-  const [loadStatus, setLoadStatus] = useState<String>('loading')
+  const location = useLocation()
+  const [loadStatus, setLoadStatus] = useState<string>('loading')
   const [todos, setTodos] = useState<Todo[]>([])
+  const [flashType, setFlashType] = useState<string>('')
+  const [flashMessage, setFlashMessage] = useState<string>('')
 
   const getTodos = async () => {
     const { data, status } = await axios.get('/api/todos');
@@ -17,8 +21,16 @@ const TodoIndex: React.FC = () => {
     }
   }
 
+  const getFlashMessage = () => {
+    if (location?.state) {
+      setFlashType(location?.state.flash_type)
+      setFlashMessage(location?.state.flash_message)
+    }
+  }
+
   useEffect(() => {
     getTodos();
+    getFlashMessage();
   }, [])
 
   if (loadStatus === 'loading') {
@@ -30,6 +42,7 @@ const TodoIndex: React.FC = () => {
   return (
     <>
       <h1 className='page-title'>Todo一覧</h1>
+      <FlashMessage type={flashType} message={flashMessage} />
       <div className='table-area'>
         <div className='table-header'>
           <Link to={`/todos/create`} className='btn btn-info btn-default'>新規登録</Link>

@@ -5,7 +5,7 @@ import { Todo } from '../../models/Todo';
 
 const TodoShow: React.FC = () => {
   const params = useParams();
-  const [loadStatus, setLoadStatus] = useState<String>('loading')
+  const [loadStatus, setLoadStatus] = useState<string>('loading')
   const [todo, setTodo] = useState<Todo|undefined>()
 
   const getTodo = async () => {
